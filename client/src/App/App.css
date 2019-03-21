@@ -1,0 +1,31 @@
+:root {
+  --navBlue:#086788;
+  --mainBlue: #0b779b;
+  --mainGreen:#197924;
+  --darkGreen: #0a9486;
+  --altGreen: #0b776c;
+  --mainWhite:#f3f3f3;
+  --mainDark:#232528;
+  --mainRed: rgb(156, 41, 41);
+  --mainYellow:#ffa400;
+}
+
+body {
+  background: var(--mainWhite) !important;
+}
+
+.text-bright {
+  color: var(--mainYellow);
+}
+
+.text-blue {
+  color: var(--mainBlue);
+}
+
+.text-green {
+  color: var(--mainGreen);
+}
+
+.thread {
+  border-bottom: 0.5px solid #77cec5 !important;
+}
