@@ -17,7 +17,7 @@ export default class LastMessagesList extends Component {
               {(value) => {
                 const lastPosts = value.posts.splice(0,3);
                 return lastPosts.map(post => {
-                  return <LastMessage key={post.id} post={post} />
+                  return <LastMessage key={post._id} post={post} />
                 });
               }}
             </PostConsumer>

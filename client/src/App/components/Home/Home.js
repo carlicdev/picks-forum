@@ -4,7 +4,7 @@ import NewComment from '../Comments/NewComment';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import Banner from '../Banner/Banner';
 import {Connected} from '../Connected/Connected';
-import ForumSection from '../Forum/ForumSection';
+import ForumHome from '../Forum/ForumHome';
 import LastMessagesList from '../Last/LastMessagesList';
 import ForumStats from '../Stats/ForumStats';
 
@@ -19,12 +19,12 @@ export default class Home extends Component {
         <div className="row">
           <div className="col-lg-9">
             <Banner />
-            <ForumSection />
-            <ForumStats />
+            <ForumHome />
           </div>
           <div className="col-lg-3">
             <Connected connectedUsers='CarliC' />
             <LastMessagesList />
+            <ForumStats />
           </div>
         </div>
       </div>

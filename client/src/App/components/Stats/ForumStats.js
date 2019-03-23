@@ -12,38 +12,39 @@ export default class ForumStats extends Component {
           <div className="card-body pt-4 pb-0">
             <PostConsumer>
               {(value) => {
+                const { posts } = value;
                 return (
-                  <div className="container text-center">
+                  <div className="container p-0">
                       <div className="row">
-                        <div classname="col-sm-8">
-                         <p>Temas:</p>
+                        <div className="col-sm-8 text-left">
+                         <p className="text-green">Temas:</p>
                         </div>
-                        <div className="col-sm-4">
+                        <div className="col-sm-4 text-right">
                         10
                         </div>
                       </div>
                       <div className="row">
-                      <div classname="col-8">
-                        <p>Mensajes:</p>
+                      <div className="col-8">
+                        <p className="text-green">Mensajes:</p>
                       </div>
-                      <div className="col-4">
-                      100
+                      <div className="col-4 text-right">
+                       <p className="text-blue">{posts.length}</p>
                       </div>
                     </div>
                       <div className="row">
-                      <div classname="col-8">
-                        <p>Usuarios:</p>
+                      <div className="col-8">
+                        <p className="text-green">Usuarios:</p>
                       </div>
-                      <div className="col-4">
+                      <div className="col-4 text-right">
                         2
                       </div>
                     </div>
                     <div className="row">
-                    <div classname="col-8">
-                      <p>Ultimo usuario:</p>
+                    <div className="col-6">
+                      <p className="text-green"><small>Ultimo usuario</small>:</p>
                     </div>
-                    <div className="col-4">
-                      Alguien
+                    <div className="col-6 text-right">
+                      <p>alguien</p>
                     </div>
                   </div> 
                 </div>                                            

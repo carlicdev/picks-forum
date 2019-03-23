@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { allPosts, allUsers } from '../src/data';
+import { allUsers } from '../src/data';
 
 function compare(a, b) {
-    if(a.date > b.date) {
+    if(a.timestamp > b.timestamp) {
         return -1;
     }
-    if(a.date < b.date) {
+    if(a.timestamp < b.timestamp) {
         return 1;
     }
     else {
@@ -25,31 +25,44 @@ class PostProvider extends Component {
         super(props);
         this.state = {
             posts: [],
-            lastPosts: [],
+            categories: [],
+            subjects: [],
+            threads: [],
             users: [],
         }
     }
 
-    componentWillMount() {
-        this.setPosts();
-        this.getLastPosts(allPosts);
+    componentDidMount() {
+        let setAll = [
+            this.setCategories(),
+            this.setSubjects(),
+            this.setThreads(),
+            this.setPosts(),
+        ];
+
+        Promise.all(setAll);
     }
 
 
 
 
-
-    setPosts = () => {
-        let tempPosts = [];
-        allPosts.forEach(post => {
-            const singlePost = {...post};
-            tempPosts = [...tempPosts, singlePost];
-        });
-        tempPosts = tempPosts.sort(compare);
-        this.setState(() => {
-            return {posts: tempPosts}
-        })
+      setPosts  = async () => {
+        await fetch('/api/forum/posts')
+            .then(response => response.json())
+            .then((response) => {
+                let tempPosts = [];
+                response.forEach(post => {
+                    const singlePost = {...post};
+                    tempPosts = [...tempPosts, singlePost];
+                });
+                tempPosts = tempPosts.sort(compare);
+                this.setState(() => {
+                    return {posts: tempPosts};
+                });
+            })
+            .catch(err => console.error(err));
     }
+
 
     setUsers = () => {
         let tempUsers = [];
@@ -81,6 +94,43 @@ class PostProvider extends Component {
         this.setState(() => {
             return {lastPosts: tempLastPosts}
         })
+    }
+
+    setCategories = async () => {
+        await fetch('/api/forum/categories')
+            .then(response => response.json())
+            .then((response) => {
+                this.setState(() => {
+                    return {categories: response}
+                })
+
+            })
+            .catch(err => console.log(err));
+
+    }
+
+    setSubjects = async () => {
+       await fetch('/api/forum/subjects')
+            .then(response => response.json())
+            .then((response) => {
+                this.setState(() => {
+                    return {subjects: response}
+                })
+
+            })
+            .catch(err => console.log(err));        
+    }
+
+    setThreads = async () => {
+        await fetch('/api/forum/threads')
+            .then(response => response.json())
+            .then((response) => {
+                this.setState(() => {
+                    return {threads: response}
+                })
+
+            })
+            .catch(err => console.log(err));        
     }
     
 

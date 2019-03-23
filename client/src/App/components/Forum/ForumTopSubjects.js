@@ -3,11 +3,13 @@ import { PostConsumer } from '../../../context';
 import { Link } from 'react-router-dom';
 
 import { FaRegComments, FaUserTag } from 'react-icons/fa';
-import { IoIosCalendar } from 'react-icons/io'
+import { IoIosCalendar } from 'react-icons/io';
+import { onDay } from '../../helpers';
 
 export default class ForumTopSubjects extends Component {
   render() {
-     const { topSubject, title, date, author} = this.props.post;
+     const {  subject, title, timestamp, author} = this.props.post;
+     const date = onDay(timestamp);
      const { subjectPosts } = this.props;
     return (
         <PostConsumer>
@@ -20,7 +22,7 @@ export default class ForumTopSubjects extends Component {
                     </div>
                     <div className="col-md-5 mb-0">
                         <Link to="/forums/threads">
-                            <h5 className="text-blue"><b>{topSubject}</b></h5>
+                            <h5 className="text-blue"><b>{subject}</b></h5>
                         </Link>
                     </div>
                     <div className="col-md-2">

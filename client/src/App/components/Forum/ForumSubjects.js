@@ -3,17 +3,6 @@ import React, { Component } from 'react'
 import { PostConsumer } from '../../../context';
 import ForumThread from '../Forum/ForumThread';
 
-function compare(a, b) {
-    if(a.date > b.date) {
-        return -1;
-    }
-    if(a.date < b.date) {
-        return 1;
-    }
-    else {
-        return 0;
-    }
-  }
 
 export default class ForumSubjects extends Component {
   render() {
